@@ -43,11 +43,11 @@ GameObject:
   - component: {fileID: 2487476175834536025}
   - component: {fileID: 928068339304058048}
   - component: {fileID: 3972305103719379625}
-  - component: {fileID: 2814051492103361092}
   - component: {fileID: 9003748538920028073}
   - component: {fileID: 4647857407002511820}
   - component: {fileID: 4770358315186992693}
   - component: {fileID: 2103164745006905613}
+  - component: {fileID: 394740898082274827}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  weaponData: {fileID: 11400000, guid: 2292b12658d6247af8bbfdd4cfa6f63f, type: 2}
+  weaponData: {fileID: 11400000, guid: 86f964d6abb7e014e99959714daf08fa, type: 2}
   muzzle: {fileID: 3892111678295099518}
   bulletShellEjectPoint: {fileID: 1392978279787390460}
   obstructionMask:
@@ -144,21 +144,6 @@ MonoBehaviour:
     m_Bits: 55
   chestHeightOffset: 1.2
   onWeaponFiredEvent: {fileID: 11400000, guid: b29544cc354224aaf9b624b47ddc4c3a, type: 2}
---- !u!114 &2814051492103361092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3794482621055577394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0618b0fa3d6ef4a21b0046ea84eb463b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  maxRange: 100
-  hitForce: 100
 --- !u!114 &9003748538920028073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +202,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kits.GameplayNGO.Shooter.WeaponStateManager
   currentState: 0
+--- !u!114 &394740898082274827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794482621055577394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac50bc1b252e1824f8ec2021e3088a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Blocks.Gameplay.Shooter::ChainLightningBehavior
+  ShowTopMostFoldoutHeaderGroup: 1
+  initialRange: 30
+  chainRange: 15
+  maxChains: 4
+  chainAngle: 90
+  targetAcquisitionRadius: 0.5
+  baseDamage: 6
+  damageDecayPerChain: 0.7
+  hitForce: 50
+  lightningColor: {r: 0.4, g: 0.8, b: 1, a: 1}
+  arcWidthStart: 0.02
+  arcWidthEnd: 0.04
+  arcDuration: 0.15
+  arcSegments: 12
+  arcAmplitude: 0.3
+  arcFrequency: 8
+  arcAnimationSpeed: 10
+  arcJitter: 0.2
+  arcMaterial: {fileID: 2100000, guid: 2f0e6b8c3532c4cf4bbba49b30688fc9, type: 2}
+  emitPointLights: 1
+  pointLightIntensity: 2
+  pointLightRange: 5
 --- !u!1 &8088137118841385260
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +247,7 @@ GameObject:
   - component: {fileID: 7339433023181700788}
   - component: {fileID: 6849725526956148986}
   m_Layer: 0
-  m_Name: Weapon_AssaultRifle
+  m_Name: Weapon_Chain_Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

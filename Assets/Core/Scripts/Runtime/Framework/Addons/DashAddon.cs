@@ -6,7 +6,8 @@ public class DashAddon : NetworkBehaviour, IPlayerAddon
 {
     [Header("References")]
     [SerializeField] private DashAbility dashAbility;
-    [SerializeField] private GameEvent onPrimaryActionPressed;
+    // CHANGED: Renamed from onPrimaryActionPressed
+    [SerializeField] private GameEvent onDashPressed;
 
     [Header("Feedback")]
     [SerializeField] private SoundDef insufficientStaminaSound;
@@ -26,23 +27,23 @@ public class DashAddon : NetworkBehaviour, IPlayerAddon
         }
     }
 
-    // Enable input listening when player spawns
     public void OnPlayerSpawn()
     {
         if (!m_PlayerManager.IsOwner) return;
-        if (onPrimaryActionPressed != null)
+        // CHANGED: Use the new reference
+        if (onDashPressed != null)
         {
-            onPrimaryActionPressed.RegisterListener(HandleDashInput);
+            onDashPressed.RegisterListener(HandleDashInput);
         }
     }
 
-    // Cleanup when player despawns
     public void OnPlayerDespawn()
     {
         if (!m_PlayerManager.IsOwner) return;
-        if (onPrimaryActionPressed != null)
+        // CHANGED: Use the new reference
+        if (onDashPressed != null)
         {
-            onPrimaryActionPressed.UnregisterListener(HandleDashInput);
+            onDashPressed.UnregisterListener(HandleDashInput);
         }
     }
 

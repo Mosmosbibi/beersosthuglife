@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 8293538361845572120}
   - component: {fileID: 4304002888707095339}
   - component: {fileID: 2290821848289448637}
+  - component: {fileID: 2876745588766280906}
+  - component: {fileID: 3264719580462023325}
   m_Layer: 3
   m_Name: '[BB] CorePlayer'
   m_TagString: Player
@@ -87,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3365733114
+  GlobalObjectIdHash: 1777126326
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -167,6 +169,7 @@ MonoBehaviour:
   onPrimaryActionPressed: {fileID: 11400000, guid: f48adbe17161042ef8cf65a5a455594a, type: 2}
   onPrimaryActionReleased: {fileID: 11400000, guid: a670f0da4a4d64cea91ff13081e68da8, type: 2}
   onMenuPressed: {fileID: 11400000, guid: 5f76e3427057c467fa2f4de049753b9e, type: 2}
+  onDashPressed: {fileID: 11400000, guid: 6b8288d68df9b074fb00f8705311567b, type: 2}
 --- !u!114 &7875331226141230548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +437,44 @@ MonoBehaviour:
   doubleJumpHeight: 2
   staminaCost: 15
   onJumpPressed: {fileID: 11400000, guid: 84375de8d548d4a43a42608cffd89549, type: 2}
+--- !u!114 &2876745588766280906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82da7442f84993348b7eb754bc471b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Blocks.Gameplay.Core::DashAbility
+  dashForce: 25
+  dashDuration: 0.2
+  dashCooldown: 1
+  staminaCost: 15
+  requireGrounded: 0
+  allowAirDash: 1
+  maxAirDashes: 1
+  dashStartEffect: {fileID: 1784979674055767841, guid: 97442867c93b8496c826100a3164b476, type: 3}
+  dashStartSound: {fileID: 11400000, guid: a476832fc9b1e3b4ab11686f9a7c1185, type: 2}
+--- !u!114 &3264719580462023325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97eba309eac17ff4fb9e75d0bf41c42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Blocks.Gameplay.Core::DashAddon
+  ShowTopMostFoldoutHeaderGroup: 1
+  dashAbility: {fileID: 2876745588766280906}
+  onDashPressed: {fileID: 11400000, guid: 6b8288d68df9b074fb00f8705311567b, type: 2}
+  insufficientStaminaSound: {fileID: 11400000, guid: 053c472a2e6f5294db2d09edf054fddc, type: 2}
+  warningCooldown: 2
 --- !u!1 &8338988566280778634
 GameObject:
   m_ObjectHideFlags: 0

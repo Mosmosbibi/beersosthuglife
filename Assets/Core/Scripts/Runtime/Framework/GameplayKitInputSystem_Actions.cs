@@ -183,6 +183,15 @@ namespace Blocks.Gameplay.Core
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""da11fe0a-81e9-4a41-bdf6-8c9eedfcd38a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -502,6 +511,17 @@ namespace Blocks.Gameplay.Core
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a5204e4-586c-4a2f-a42c-e91e16106816"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1099,6 +1119,7 @@ namespace Blocks.Gameplay.Core
             m_Player_SecondaryAction = m_Player.FindAction("SecondaryAction", throwIfNotFound: true);
             m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
             m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+            m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1202,6 +1223,7 @@ namespace Blocks.Gameplay.Core
         private readonly InputAction m_Player_SecondaryAction;
         private readonly InputAction m_Player_Reload;
         private readonly InputAction m_Player_Menu;
+        private readonly InputAction m_Player_Dash;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1253,6 +1275,10 @@ namespace Blocks.Gameplay.Core
             /// Provides access to the underlying input action "Player/Menu".
             /// </summary>
             public InputAction @Menu => m_Wrapper.m_Player_Menu;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Dash".
+            /// </summary>
+            public InputAction @Dash => m_Wrapper.m_Player_Dash;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1309,6 +1335,9 @@ namespace Blocks.Gameplay.Core
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
 
             /// <summary>
@@ -1350,6 +1379,9 @@ namespace Blocks.Gameplay.Core
                 @Menu.started -= instance.OnMenu;
                 @Menu.performed -= instance.OnMenu;
                 @Menu.canceled -= instance.OnMenu;
+                @Dash.started -= instance.OnDash;
+                @Dash.performed -= instance.OnDash;
+                @Dash.canceled -= instance.OnDash;
             }
 
             /// <summary>
@@ -1720,6 +1752,13 @@ namespace Blocks.Gameplay.Core
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMenu(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnDash(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

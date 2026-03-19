@@ -29,6 +29,8 @@ namespace Blocks.Gameplay.Core
         [SerializeField] private GameEvent onPrimaryActionReleased;
         [Tooltip("Raised when the menu button is pressed.")]
         [SerializeField] private GameEvent onMenuPressed;
+        [Tooltip("Raised when the dash button is pressed.")]
+        [SerializeField] private GameEvent onDashPressed;
 
         private GameplayInputSystem_Actions m_InputActions;
 
@@ -81,6 +83,7 @@ namespace Blocks.Gameplay.Core
             m_InputActions.Player.PrimaryAction.canceled += HandlePrimaryActionReleased;
 
             m_InputActions.Player.Menu.performed += HandleMenuPressed;
+            m_InputActions.Player.Dash.performed += HandleDashPressed;
         }
 
         private void UnregisterInputActions()
@@ -101,6 +104,7 @@ namespace Blocks.Gameplay.Core
             m_InputActions.Player.PrimaryAction.canceled -= HandlePrimaryActionReleased;
 
             m_InputActions.Player.Menu.performed -= HandleMenuPressed;
+            m_InputActions.Player.Dash.performed -= HandleDashPressed;
         }
 
         #endregion
@@ -115,7 +119,7 @@ namespace Blocks.Gameplay.Core
         private void HandlePrimaryActionPressed(InputAction.CallbackContext context) => onPrimaryActionPressed?.Raise();
         private void HandlePrimaryActionReleased(InputAction.CallbackContext context) => onPrimaryActionReleased?.Raise();
         private void HandleMenuPressed(InputAction.CallbackContext context) => onMenuPressed?.Raise();
-
+        private void HandleDashPressed(InputAction.CallbackContext context) => onDashPressed?.Raise();
         #endregion
     }
 }
